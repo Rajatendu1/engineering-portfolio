@@ -182,21 +182,21 @@
           <p class="metric-sub mono">all 200 · every call via backup</p>
         </div>
       </div>
-      <p class="metrics-note">Local load test against simulated providers, 32 clients. A sanity check, not a capacity claim.</p>
+      <p class="metrics-note">Historical local load-test results recorded 9 Nov 2026 against simulated providers, 32 clients. Not rerun against the current build; a sanity check, not a capacity claim.</p>
 
       <dl class="facts">
-        <div><dt>Verification</dt><dd>162 unit, API and integration tests plus 61 end-to-end shell checks and a 23-check pre-deploy JS smoke gate pass; live interactive demo with real Groq models and a live delegation exchange verified 9 Nov 2026</dd></div>
+        <div><dt>Verification</dt><dd>Historical result recorded 9 Nov 2026: 162 unit, API and integration tests, 61 end-to-end shell checks and a 23-check JS smoke gate; real-model and delegation demo checks were recorded that day. Current checks and results are in the public repository.</dd></div>
         <div><dt>Stack</dt><dd>Python, FastAPI, Redis (Upstash), Vercel serverless, Docker packaging</dd></div>
       </dl>
 
       <div class="limits">
         <p class="limits-title">Honest limits</p>
-        <p>Two real Groq models sit behind the gpt-real alias with a per-route model map: primary gpt-oss-120b and backup gpt-oss-20b, both on Groq's free tier (no card). The default Try button is simulated; the real-model button on the primary is verified at 78 prompt + 16 completion tokens in about 415 ms; a direct backup button (a direct call, not failover) returned 78 + 19 tokens in about 180 ms, and both real buttons share one global budget. Real failover is verified only locally: a fault-injected dead primary was retried once, then the real backup answered (78 + 14 tokens, 504 ms) - not an actual provider outage, and independent-vendor failover remains open. The benchmarks and the failover load exercise remain simulated. The real buttons are rate-limited (about one request per 100 seconds, small bursts; a 429 means it is recharging). The delegation demo embeds the issuer inside the gateway process (one trust domain: no remote issuer or JWKS) and uses explicitly unbound bearer tokens - proof-bound (cnf) tokens are rejected rather than downgraded, and each run issues and consumes its own tokens; model allowlists and budgets come from server configuration, never from token claims. It demonstrates delegation semantics and least-privilege enforcement, not production authorization. Breaker and latency state is per instance. Runs on Vercel Hobby (personal, non-commercial); the Redis plan is unverified. Usage totals are operational telemetry, not billing-grade. The Docker image is unbuilt. A verified working prototype, not production-certified.</p>
+        <p>The deployment can configure real Groq routes; configuration does not establish current provider availability or pricing. Historical demo measurements recorded 9 Nov 2026 follow, not measurements of the current build. The default Try button is simulated; the real-model button on the primary is verified at 78 prompt + 16 completion tokens in about 415 ms; a direct backup button (a direct call, not failover) returned 78 + 19 tokens in about 180 ms, and both real buttons share one global budget. Real failover is verified only locally: a fault-injected dead primary was retried once, then the real backup answered (78 + 14 tokens, 504 ms) - not an actual provider outage, and independent-vendor failover remains open. The benchmarks and the failover load exercise remain simulated. The real buttons are rate-limited (about one request per 100 seconds, small bursts; a 429 means it is recharging). The delegation demo embeds the issuer inside the gateway process (one trust domain: no remote issuer or JWKS) and uses explicitly unbound bearer tokens - proof-bound (cnf) tokens are rejected rather than downgraded, and each run issues and consumes its own tokens; model allowlists and budgets come from server configuration, never from token claims. It demonstrates delegation semantics and least-privilege enforcement, not production authorization. Breaker and latency state is per instance. Runs on Vercel Hobby (personal, non-commercial); the Redis plan is unverified. Usage totals are operational telemetry, not billing-grade. The Docker image is unbuilt. A prototype, not production-certified.</p>
       </div>
 
       <div class="project-links">
         <a class="text-link" href="https://llmgate-demo.vercel.app" target="_blank" rel="noopener">Open the live demo</a>
-        <p class="project-links-note">Try it live: the default button sends a fixed prompt through the full gateway path to simulated providers; explicit buttons call the real Groq primary and the real backup directly (a direct call, not failover); and a delegation button runs a complete RFC 8693 exchange - a sub-agent reaches the cheap model, is refused the expensive one with 403, and a widening attempt is rejected. The real buttons share a tight budget (about one request per 100 seconds; a 429 means it is recharging). Source kept private.</p>
+        <p class="project-links-note">Try it live: the default button sends a fixed prompt through the full gateway path to simulated providers; explicit buttons call the real Groq primary and the real backup directly (a direct call, not failover); and a delegation button runs a complete RFC 8693 exchange - a sub-agent reaches the cheap model, is refused the expensive one with 403, and a widening attempt is rejected. The real buttons share a tight budget (about one request per 100 seconds; a 429 means it is recharging).</p>
       </div>
     </article>
 
@@ -278,24 +278,24 @@
         <li>Per-agent policy at every hop, and every grant and refusal recorded in a hash-chained audit log.</li>
         <li>A standalone resource server verifies tokens over remote JWKS in a separate process: the real topology, not shared state.</li>
         <li>DPoP-style ES256 sender constraint (method, URL, time, token hash): at the token endpoint a live proof is verified and the issued token is bound to that key via a <code>cnf.jkt</code> claim, so presenting a token later requires the key it was bound to, and a replayed proof is rejected; on a persistent single instance the proof cache survives restarts, and an opt-in server-nonce mode adds the RFC 9449 challenge flow (120-second, single-use).</li>
-        <li>A 13-scenario threat model (kept private with the source) maps each mitigated threat to the code and tests that cover it; responses carry hardening headers (content-type sniffing disabled, a content security policy restricting connections to the same origin (inline scripts, styles and Google Fonts allowed), per-request IDs for tracing).</li>
+        <li>The original threat document has not been recovered; responses carry hardening headers (content-type sniffing disabled, a content security policy restricting connections to the same origin (inline scripts, styles and Google Fonts allowed), per-request IDs for tracing).</li>
         <li>Operator tooling: structured JSON request logs (method, path, status and duration only, never headers, queries or bodies), per-process metrics with a request ID per call, and signing-key rotation with a retirement window.</li>
       </ul>
 
 
       <dl class="facts">
-        <div><dt>Verification</dt><dd>220 unit and integration tests, 47 end-to-end HTTP checks, 11 restart durability checks and 6 two-process revocation checks pass locally</dd></div>
+        <div><dt>Verification</dt><dd>Recovered 0.14.1 baseline, checked 11 Nov 2026: 28 new pytest cases, 17 integration checks, 26 process checks and desktop/390px browser workflows. These are new recovery checks, not the lost original development suite; original test and operational/threat files have not been recovered.</dd></div>
         <div><dt>Stack</dt><dd>Python, FastAPI, RS256 JWTs, ES256 sender constraints, JWKS endpoint with key rotation</dd></div>
       </dl>
 
       <div class="limits">
         <p class="limits-title">Honest limits</p>
-        <p>Not a production authorization server and not independently audited. The public demo is stateless and in-memory: every lab run uses a fresh throwaway instance that stores nothing, so nothing carries across runs, and admin and revocation endpoints are disabled there. Metrics on the public demo are per-instance and reset on restart. Sender constraints are a DPoP-style subset: replay tracking is per server, durable across restarts only when the server runs with persistence, so on a multi-instance host it is best-effort, not global replay prevention. The opt-in server-nonce mode (120-second, single-use) is off on the public demo. The hash-chained log is tamper-evident, not tamper-proof. Source kept private.</p>
+        <p>Not a production authorization server and not independently audited. The public demo is stateless and in-memory: every lab run uses a fresh throwaway instance that stores nothing, so nothing carries across runs, and admin and revocation endpoints are disabled there. Metrics on the public demo are per-instance and reset on restart. Sender constraints are a DPoP-style subset: replay tracking is per server, durable across restarts only when the server runs with persistence, so on a multi-instance host it is best-effort, not global replay prevention. The opt-in server-nonce mode (120-second, single-use) is off on the public demo. The hash-chained log is tamper-evident, not tamper-proof.</p>
       </div>
 
       <div class="project-links">
         <a class="text-link" href="https://actas-rajatendu.vercel.app" target="_blank" rel="noopener">Open the live demo</a>
-        <p class="project-links-note">Build a delegation chain, narrow scope across hops, attempt a forbidden widening and bind a token to a key: the lab accepts the holder, rejects a copied token and rejects a replayed proof, all on a fresh throwaway instance that stores nothing. Actas also runs embedded inside llmgate as its delegation layer - the gateway demo runs a full exchange against simulated models. Source kept private.</p>
+        <p class="project-links-note">Build a delegation chain, narrow scope across hops, attempt a forbidden widening and bind a token to a key: the lab accepts the holder, rejects a copied token and rejects a replayed proof, all on a fresh throwaway instance that stores nothing. Actas also runs embedded inside llmgate as its delegation layer - the gateway demo runs a full exchange against simulated models.</p>
       </div>
     </article>
   </section>
