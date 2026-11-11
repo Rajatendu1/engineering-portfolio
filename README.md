@@ -5,4 +5,4 @@ This static site contains index.html, style.css, favicon.svg, og.png and vercel.
 
 The projects shown are tested prototypes with stated limitations. This repository contains the portfolio website, not the standalone Actas source. The current published website is unchanged by this source backup.
 
-GitHub Actions and Git-linked deployments are not enabled by this initial publication. No license has been added.
+GitHub Actions checks local assets, links, security headers, the inline-script CSP hash and JavaScript syntax, with negative regression cases. It does not verify remote link availability, visual layout or hosted deployments. Vercel connection and production promotion are separate steps; this CI workflow does not deploy. No license has been added.
