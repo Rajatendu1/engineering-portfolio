@@ -310,6 +310,14 @@
       <a class="text-link" href="https://github.com/authlib/authlib/pull/1031" target="_blank" rel="noopener">View merged PR #1031</a>
       <p class="project-links-note">Patch prepared and tests executed by Instinct, an AI assistant, at my request.</p>
     </article>
+    <article>
+      <p class="project-kicker mono">gookit/goutil · Merged 12 Nov 2026</p>
+      <div class="project-head"><h2>JSON dates, decoded properly</h2></div>
+      <p class="project-summary">Fixed <code>timex.Time.UnmarshalJSON</code> in gookit's Go utility library, which stripped the first and last bytes of its input instead of decoding the JSON string. An escaped timestamp failed to decode, a bare number could be misread as a date, and <code>0</code> or <code>1</code> caused a slice-bounds panic.</p>
+      <p class="about-text">The fix decodes the JSON token with <code>encoding/json</code> before handing the value to the existing parser - no new date parser or dependency. 24 added table cases cover escaped strings, request-binding numbers, null handling and state preservation; the patched full suite passes. Accepted and merged upstream in goutil.</p>
+      <a class="text-link" href="https://github.com/gookit/goutil/pull/316" target="_blank" rel="noopener">View merged PR #316</a>
+      <p class="project-links-note">Patch prepared and tests executed by Instinct, an AI assistant, at my request.</p>
+    </article>
   </section>
 
   <section class="section reveal" id="pipeline">
