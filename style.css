@@ -637,3 +637,4 @@ main {
 
 /* Keep contribution heading clear of the sticky navigation. */
 #open-source { scroll-margin-top: 88px; }
+#open-source article + article { margin-top: 48px; padding-top: 36px; border-top: 1px solid var(--line); }
