@@ -638,3 +638,32 @@ main {
 /* Keep contribution heading clear of the sticky navigation. */
 #open-source { scroll-margin-top: 88px; }
 #open-source article + article { margin-top: 48px; padding-top: 36px; border-top: 1px solid var(--line); }
+
+/* Ongoing open-source contributions */
+.oss-ongoing {
+  margin-top: 48px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: clamp(20px, 4vw, 32px);
+  background: var(--panel);
+}
+.oss-ongoing-heading {
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  margin: 8px 0 20px;
+}
+.oss-ongoing-list { list-style: none; display: grid; gap: 14px; }
+.oss-ongoing-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+  font-size: 14.5px;
+  color: var(--ink-2);
+}
+.oss-ongoing-list li:last-child { border-bottom: none; padding-bottom: 0; }
+.oss-ongoing-list .text-link { font-size: 14.5px; }
+.oss-status { font-size: 11px; color: var(--teal); letter-spacing: 0.05em; text-transform: uppercase; }
