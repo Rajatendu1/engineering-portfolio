@@ -326,6 +326,14 @@
       <a class="text-link" href="https://github.com/gorakhargosh/watchdog/pull/1458" target="_blank" rel="noopener">View merged PR #1458</a>
       <p class="project-links-note">Tests prepared and executed by Instinct, an AI assistant, at my request.</p>
     </article>
+    <article>
+      <p class="project-kicker mono">nushell/reedline · Merged 14 Nov 2026</p>
+      <div class="project-head"><h2>Completion highlights on the right letters</h2></div>
+      <p class="project-summary">Fixed fallback completion highlighting in reedline, the line editor behind Nushell. When a completer supplies no match indices, the fallback searched a lowercased copy and returned UTF-8 byte offsets, while the styler expects grapheme indices in the original text - underlining drifted after accented characters, emoji and case expansions. The fix maps those offsets back to the original displayed graphemes.</p>
+      <p class="about-text">Completer-supplied match indices and the public API are unchanged. Validated with 18 added cases plus the library suite and doctests run locally. Accepted and merged upstream in reedline.</p>
+      <a class="text-link" href="https://github.com/nushell/reedline/pull/1303" target="_blank" rel="noopener">View merged PR #1303</a>
+      <p class="project-links-note">Patch prepared and tests executed by Instinct, an AI assistant, at my request.</p>
+    </article>
     <div class="oss-ongoing">
       <p class="project-kicker mono">Open upstream, not merged · one report fixed</p>
       <h2 class="oss-ongoing-heading">Selected open pull requests and reported issues</h2>
@@ -376,7 +384,7 @@
           <span class="oss-status mono">Closed · fixed upstream by maintainer after report</span>
         </li>
       </ul>
-      <p class="project-links-note">Statuses verified 14 Nov 2026. Only the three contributions above are merged upstream; eight items remain open, and wcmatch #278 was closed after the maintainer shipped a fix for the reported bug. Research, patches and tests by Instinct, an AI assistant, at my request.</p>
+      <p class="project-links-note">Statuses verified 14 Nov 2026. Only the four contributions above are merged upstream; eight items remain open, and wcmatch #278 was closed after the maintainer shipped a fix for the reported bug. Research, patches and tests by Instinct, an AI assistant, at my request.</p>
     </div>
   </section>
 
