@@ -334,58 +334,15 @@
       <a class="text-link" href="https://github.com/nushell/reedline/pull/1303" target="_blank" rel="noopener">View merged PR #1303</a>
       <p class="project-links-note">Patch prepared and tests executed by Instinct, an AI assistant, at my request.</p>
     </article>
-    <div class="oss-ongoing">
-      <p class="project-kicker mono">Open upstream, not merged · one report fixed</p>
-      <h2 class="oss-ongoing-heading">Selected open pull requests and reported issues</h2>
-      <ul class="oss-ongoing-list">
-        <li>
-          <a class="text-link" href="https://github.com/pyenv/pyenv/pull/3633" target="_blank" rel="noopener">pyenv/pyenv #3633</a>
-          <span class="oss-desc">makes <code>python-build</code> honor custom dependency header flags</span>
-          <span class="oss-status mono">PR open · maintainer-approved, awaiting merge</span>
-        </li>
-        <li>
-          <a class="text-link" href="https://github.com/graphql/graphql-js/pull/5002" target="_blank" rel="noopener">graphql/graphql-js #5002</a>
-          <span class="oss-desc">adds <code>hideSuggestions</code> support when building and extending schemas</span>
-          <span class="oss-status mono">PR open</span>
-        </li>
-        <li>
-          <a class="text-link" href="https://github.com/msgspec/msgspec/pull/1342" target="_blank" rel="noopener">msgspec/msgspec #1342</a>
-          <span class="oss-desc">preserves and validates typed <code>TypedDict</code> extra items</span>
-          <span class="oss-status mono">PR open</span>
-        </li>
-        <li>
-          <a class="text-link" href="https://github.com/microsoft/pyright/pull/12010" target="_blank" rel="noopener">microsoft/pyright #12010</a>
-          <span class="oss-desc">fixes stale CLI watch diagnostics after file deletion</span>
-          <span class="oss-status mono">PR open</span>
-        </li>
-        <li>
-          <a class="text-link" href="https://github.com/graphql-python/graphene/pull/1612" target="_blank" rel="noopener">graphql-python/graphene #1612</a>
-          <span class="oss-desc">fixes enum construction after registering an enum named <code>type</code></span>
-          <span class="oss-status mono">PR open</span>
-        </li>
-        <li>
-          <a class="text-link" href="https://github.com/jsh9/pydoclint/pull/333" target="_blank" rel="noopener">jsh9/pydoclint #333</a>
-          <span class="oss-desc">recognizes <code>yield</code> expressions outside expression statements</span>
-          <span class="oss-status mono">PR open</span>
-        </li>
-        <li>
-          <a class="text-link" href="https://github.com/pytorch/pytorch/issues/204781" target="_blank" rel="noopener">pytorch/pytorch #204781</a>
-          <span class="oss-desc">reported that <code>torch._numpy.pad</code> silently crops input for a negative <code>pad_width</code></span>
-          <span class="oss-status mono">Issue open</span>
-        </li>
-        <li>
-          <a class="text-link" href="https://github.com/mongodb/bson-rust/issues/717" target="_blank" rel="noopener">mongodb/bson-rust #717</a>
-          <span class="oss-desc">reported that <code>DateTime</code> conversions disagree for pre-epoch timestamps with sub-millisecond precision</span>
-          <span class="oss-status mono">Issue open</span>
-        </li>
-        <li>
-          <a class="text-link" href="https://github.com/facelessuser/wcmatch/issues/278" target="_blank" rel="noopener">facelessuser/wcmatch #278</a>
-          <span class="oss-desc">reported that REALPATH glob matching rejects a symlink path returned by <code>glob</code></span>
-          <span class="oss-status mono">Closed · fixed upstream by maintainer after report</span>
-        </li>
-      </ul>
-      <p class="project-links-note">Statuses verified 14 Nov 2026. Only the four contributions above are merged upstream; eight items remain open, and wcmatch #278 was closed after the maintainer shipped a fix for the reported bug. Research, patches and tests by Instinct, an AI assistant, at my request.</p>
-    </div>
+    <article>
+      <p class="project-kicker mono">sqlfluff/sqlfluff · Merged 15 Nov 2026</p>
+      <div class="project-head"><h2>TRANSFORM statements, lintable</h2></div>
+      <p class="project-summary">Added PostgreSQL <code>CREATE TRANSFORM</code> and <code>DROP TRANSFORM</code> parsing to SQLFluff. Scripts that define procedural-language type conversions - PostgreSQL's <code>hstore_plpython</code> extension, for example - previously failed with parse errors and now lint cleanly.</p>
+      <p class="about-text">Fixtures cover <code>OR REPLACE</code>, either or both conversion directions, optional signatures, schema-qualified and quoted names, <code>IF EXISTS</code> and <code>CASCADE</code>/<code>RESTRICT</code>, and all twelve new statements were validated against native PostgreSQL 18 grammar via pglast. Accepted and merged upstream in SQLFluff.</p>
+      <a class="text-link" href="https://github.com/sqlfluff/sqlfluff/pull/9140" target="_blank" rel="noopener">View merged PR #9140</a>
+      <p class="project-links-note">Patch prepared and tests executed by Instinct, an AI assistant, at my request.</p>
+    </article>
+    <p class="project-links-note">Highlights are capped at the five most recent merged contributions; open work and earlier entries stay in GitHub history. Research, patches and tests by Instinct, an AI assistant, at my request.</p>
   </section>
 
   <section class="section reveal" id="pipeline">
@@ -457,4 +414,3 @@
 
 </body>
 </html>
-
