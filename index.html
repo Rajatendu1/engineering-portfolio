@@ -468,7 +468,7 @@
     entries.forEach(function(en){
       if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
     });
-  },{threshold:0.08});
+  },{threshold:0,rootMargin:'0px 0px -12% 0px'});
   els.forEach(function(e){io.observe(e);});
 })();
 </script>
